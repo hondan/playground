@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} This is my about page {% endblock %}</h1>
+    {% if name %}
+        <p>My name is {{ name }}</p>
+    {% endif %}
+    {% if desc %}
+        <p>{{ desc }}</p>
+    {% else %}
+        <p>Hello there, this is my first web app! </p>
+    {% endif %}
+{% endblock %}

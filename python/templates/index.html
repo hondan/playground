@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Welcome to my page {% endblock %}</h1>
+    {% if data %}
+        {% for item in data %}
+            <a href="#">
+                <h2>{{ item['name'] }}</h2>
+            </a>
+            <p>
+                {{ item['desc'] }}
+            </p>
+            <span class="badge badge-primary">{{ item['time'] }}</span>
+            <hr>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
