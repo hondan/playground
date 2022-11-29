@@ -26,6 +26,7 @@ def write_data(data):
     # If exception, show on web server, and return False.
     except Exception as e:
         print(f'Error encountered: {str(e)}')
+        app.logger.error(f'Error encountered: {str(e)}')
         return False
 
 
@@ -46,10 +47,12 @@ def load_data(location=DB_FILE_FULL_PATH):
         # If there is an error, then output error on server, and return None
         except Exception as e:
             print(f'Error encountered: {str(e)}')
+            app.logger.error(f'Error encountered: {str(e)}')
             return None
     # If file doesn't exist, return none.
     else:
         print(f'The file at "{str(location)} does not yet exist"')
+        app.logger.warning(f'The file at "{str(location)} does not yet exist"')
         return None
 
 
