@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} This is a birthday calculator {% endblock %}</h1>
+    <p>
+      Please provide me with your name and birthday, and I will let you know, in relation to this year, how many days
+      will there be until your birthday, or how many days has it been since your last birthday.
+    </p>
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" name="name" id="name"
+                placeholder="Your name" class="form-control"
+                value="{{ request.form['name'] }}"></input>
+        </div>
+        <div class="form-group">
+            <label for="month">Select Month</label>
+            <select class="form-control" id="month" name="month">
+                <option>Please select a month</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="day">Please select your birth month</label>
+            <select class="form-control" id="day" name="day">
+                <option>Please select your birth day</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+            </select>
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div>
+            {% if message %}
+                <h2><b>{{ message }}</b></h2>
+            {% endif %}
+            {% if celebrate %}
+                <h2>
+                    <img src="https://media.tenor.com/7IaHKG4cnSwAAAAd/happy-birthday-the-office.gif">
+                </h2>
+            {% endif %}
+        </div>
+    </form>
+{% endblock %}
