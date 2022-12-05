@@ -5,7 +5,6 @@ from config import NAME, DESC, SECRET_KEY, DB_FILE_FULL_PATH
 from os import path
 import json
 from datetime import datetime
-from ast import literal_eval
 
 
 app = Flask(__name__)
@@ -135,28 +134,8 @@ def birthday():
         except ValueError:
             flash("Please choose a valid month and day", "error")
             return redirect(url_for('birthday'))
-        month_map = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July",
-                     8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}
-        big_month = [1, 3, 5, 7, 8, 10, 12]
-        if month not in big_month and day == 31:
-            flash(f"I don't think {str(month_map[month])} has 31 days", "error")
-            return redirect(url_for('birthday'))
-        elif month == 2 and day in [30, 31]:
-            flash(f"I don't think {str(month_map[month])} has {str(day)} days", "error")
-            return redirect(url_for('birthday'))
-        else:
-            bday_form = f'{str(month)}-{str(day)}-{str(datetime.now().year)}'
-            bday = datetime.strptime(str(bday_form), '%m-%d-%Y').timetuple().tm_yday
-            today = datetime.now().timetuple().tm_yday
-            if bday > today:
-                message = f"Hey {name}! you have {str(bday - today)} left until " \
-                          f"your birthday this year"
-            elif bday < today:
-                message = f"Hey {name}! Your birthday has passed {str(today - bday)} days ago this year."
-            else:
-                message = f"Happy birthday, {str(name)}!"
-                return render_template('birthday.html', message=message, celebrate=True)
-            return render_template('birthday.html', message=message)
+        message = f"The code has not been written yet... {str(name)}"
+        return render_template('birthday.html', message=message)
 
 
 @app.route('/about', methods=['GET'])
