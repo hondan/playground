@@ -145,6 +145,10 @@ def birthday():
         except ValueError:
             flash("Please choose a valid month and day", "error")
             return redirect(url_for('birthday'))
+        # Create Dictionary of month number to month text and list of months with 31 days.
+        month_map = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July",
+                     8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}
+        big_month = [1, 3, 5, 7, 8, 10, 12]
         # Write your code here to perform some checks. Makes sure the date picked is a valid date,
         # Show the days until or since the person's birthday. If it is the person's birthday, then display
         # Happy birthday, and send celebrate=True to the birthday.html when rendering.
