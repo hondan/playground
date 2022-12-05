@@ -117,23 +117,37 @@ def demo():
 def birthday():
     """
     Show the days until your birthday.
-    :return:
+    :return: Rendered birthday.html page
     """
+    # For the HTTP GET verb, return the base birthday.html page.
     if request.method == 'GET':
         return render_template('birthday.html')
+    # For post function, get the HTML variables from the forms, perform some checks, and output days until or since
+    # Birthday
     elif request.method == 'POST':
+        # Get variables from HTML
         name = request.form['name']
         month = request.form['month']
         day = request.form['day']
+        # If name is not defined, assign default.
         if not name:
             flash("You are now known as 'The person with no name'", "info")
             name = 'The person with no name'
+        # Perform checks for month and day variables to make sure they are integers and are valid, convert month and day
+        # to integers
         try:
-            month = int(month)
-            day = int(day)
+            if int(month) in range(1, 12) and int(day) in range(1, 32):
+                month = int(month)
+                day = int(day)
+            else:
+                flash(f"Month value of {str(month)} or Day value of {str(day)} is invalid", "error")
+                return redirect(url_for('birthday'))
         except ValueError:
             flash("Please choose a valid month and day", "error")
             return redirect(url_for('birthday'))
+        # Write your code here to perform some checks. Makes sure the date picked is a valid date,
+        # Show the days until or since the person's birthday. If it is the person's birthday, then display
+        # Happy birthday, and send celebrate=True to the birthday.html when rendering.
         message = f"The code has not been written yet... {str(name)}"
         return render_template('birthday.html', message=message)
 
