@@ -136,7 +136,7 @@ def birthday():
         # Perform checks for month and day variables to make sure they are integers and are valid, convert month and day
         # to integers
         try:
-            if int(month) in range(1, 12) and int(day) in range(1, 32):
+            if int(month) in range(1, 13) and int(day) in range(1, 32):
                 month = int(month)
                 day = int(day)
             else:
